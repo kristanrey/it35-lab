@@ -72,15 +72,16 @@ const Register: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        <IonGrid>
-          <IonRow>
-            <IonCol>
-              <IonAvatar>
-                <img src="https://cdn-icons-png.flaticon.com/128/16951/16951316.png" alt="Avatar" />
-              </IonAvatar>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
+      <IonGrid style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+  <IonRow>
+    <IonCol className="ion-text-center">
+      <IonAvatar style={{ width: "100px", height: "100px", margin: "auto" }}>
+        <img src="https://cdn-icons-png.flaticon.com/128/16951/16951316.png" alt="Avatar" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+      </IonAvatar>
+    </IonCol>
+  </IonRow>
+</IonGrid>
+
         <IonInput label="Email" type="email" value={email} onIonChange={(e) => setEmail(e.detail.value!)} placeholder="Enter email" />
         <IonInput type="password" label="Password" value={password} onIonChange={(e) => setPassword(e.detail.value!)} placeholder="Enter password" />
         <IonInput type="password" label="Confirm Password" value={confirmPassword} onIonChange={(e) => setConfirmPassword(e.detail.value!)} placeholder="Confirm password" />
