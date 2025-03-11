@@ -31,10 +31,10 @@ const newsData = [
   },
   {
     id: "3",
-    title: "Planned tollway seen to cut Bicol transport costs, boost jobs",
-    subtitle: "Movies & Hollywood",
-    image: "https://source.unsplash.com/800x400/?movie",
-    link: "https://www.movienews.com/new-blockbuster-2025"
+    title: "Who will present VP Sara’s impeachment articles? Prosecutor discloses some roles",
+    subtitle: "Philstar.com",
+    image: "https://media.philstar.com/photos/2024/11/19/rep-joel-chua-house-representatives_2024-11-19_17-12-20.jpg",
+    link: "https://www.philstar.com/headlines/2025/03/10/2427373/who-will-present-vp-saras-impeachment-articles-prosecutor-discloses-some-roles"
   }
 ];
 
