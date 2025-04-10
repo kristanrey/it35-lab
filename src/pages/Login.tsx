@@ -71,7 +71,7 @@ const Login: React.FC = () => {
             }}
           >
             <img 
-             src="https://sm.ign.com/t/ign_ap/screenshot/default/solo-leveling_vd6m.1280.jpg" 
+             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC4eYWUYMxURMfMo8D1gnNiYd3wXkYf0ycLQ&s" 
              alt="User Avatar" 
              style={{ width: '100%', height: '100%' }} 
             />
