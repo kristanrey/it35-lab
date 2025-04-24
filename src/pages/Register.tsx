@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import {
     IonButton,
@@ -64,18 +63,15 @@ const Register: React.FC = () => {
         setShowVerificationModal(false);
     
         try {
-            // Sign up in Supabase authentication
             const { data, error } = await supabase.auth.signUp({ email, password });
     
             if (error) {
                 throw new Error("Account creation failed: " + error.message);
             }
     
-            // Hash password before storing in the database
             const salt = await bcrypt.genSalt(10);
             const hashedPassword = await bcrypt.hash(password, salt);
     
-            // Insert user data into 'users' table
             const { error: insertError } = await supabase.from("users").insert([
                 {
                     username,
@@ -92,7 +88,6 @@ const Register: React.FC = () => {
     
             setShowSuccessModal(true);
         } catch (err) {
-            // Ensure err is treated as an Error instance
             if (err instanceof Error) {
                 setAlertMessage(err.message);
             } else {
@@ -105,7 +100,17 @@ const Register: React.FC = () => {
     return (
         <IonPage>
             <IonContent className='ion-padding'>
-                <h1>Create your account</h1>
+                {/* Avatar Image */}
+                <div style={{ width: '120px', height: '120px', margin: '0 auto 20px auto' }}>
+                    <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC4eYWUYMxURMfMo8D1gnNiYd3wXkYf0ycLQ&s"
+                        alt="User Avatar"
+                        style={{ width: '100%', height: '100%', borderRadius: '50%' }}
+                    />
+                </div>
+
+               <h1 style={{ textAlign: 'center' }}>Register your Account</h1>
+
 
                 <IonInput label="Username" labelPlacement="stacked" fill="outline" type="text" placeholder="Enter a unique username" value={username} onIonChange={e => setUsername(e.detail.value!)} style={{ marginTop: '15px' }} />
                 <IonInput label="Email" labelPlacement="stacked" fill="outline" type="email" placeholder="youremail@nbsc.edu.ph" value={email} onIonChange={e => setEmail(e.detail.value!)} style={{ marginTop: '15px' }} />
@@ -128,6 +133,15 @@ const Register: React.FC = () => {
                     <IonContent className="ion-padding">
                         <IonCard className="ion-padding" style={{ marginTop: '25%' }}>
                             <IonCardHeader>
+                                {/* Avatar Image in Modal */}
+                                <div style={{ width: '80px', height: '80px', margin: '0 auto 15px auto' }}>
+                                    <img
+                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC4eYWUYMxURMfMo8D1gnNiYd3wXkYf0ycLQ&s"
+                                        alt="User Avatar"
+                                        style={{ width: '100%', height: '100%', borderRadius: '50%' }}
+                                    />
+                                </div>
+
                                 <IonCardTitle>User Registration Details</IonCardTitle>
                                 <hr />
                                 <IonCardSubtitle>Username</IonCardSubtitle>
@@ -135,7 +149,6 @@ const Register: React.FC = () => {
 
                                 <IonCardSubtitle>Email</IonCardSubtitle>
                                 <IonCardTitle>{email}</IonCardTitle>
-
                             </IonCardHeader>
                             <IonCardContent></IonCardContent>
                             <div style={{ display: 'flex', justifyContent: 'flex-end', marginRight: '5px' }}>
@@ -162,7 +175,6 @@ const Register: React.FC = () => {
 
                 {/* Reusable AlertBox Component */}
                 <AlertBox message={alertMessage} isOpen={showAlert} onClose={() => setShowAlert(false)} />
-
             </IonContent>
         </IonPage>
     );
