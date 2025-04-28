@@ -1,0 +1,127 @@
+/* Frosty light blue mist background */
+.feed-content {
+    background: linear-gradient(120deg, #d4f1f9, #e3f9fd, #c2ebf9) no-repeat center center fixed;
+    background-size: cover;
+    color: #34495e;
+    padding: 2.5rem;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    overflow-y: scroll;
+    backdrop-filter: blur(8px);
+  }
+  
+  /* Lighter mode for writing state */
+  .feed-content.writing-post {
+    background: rgba(240, 248, 255, 0.5) !important;
+    color: #34495e !important;
+  }
+  
+  /* Frost glass container style */
+  .glass-container {
+    background: rgba(245, 255, 255, 0.4);
+    border-radius: 20px;
+    padding: 2.5rem;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 24px rgba(179, 229, 252, 0.5);
+  }
+  
+  /* Frosted heading animation */
+  ion-card-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    animation: frostyPulse 6s infinite alternate ease-in-out;
+  }
+  
+  @keyframes frostyPulse {
+    0% {
+      color: #76d7f0;
+      text-shadow: 0 0 12px #76d7f0, 0 0 24px #76d7f0;
+    }
+    50% {
+      color: #58c5ec;
+      text-shadow: 0 0 14px #58c5ec, 0 0 28px #58c5ec;
+    }
+    100% {
+      color: #2ab7e7;
+      text-shadow: 0 0 12px #2ab7e7, 0 0 24px #2ab7e7;
+    }
+  }
+  
+  /* Card hover lift effect */
+  ion-card {
+    background: rgba(255, 255, 255, 0.35) !important;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 24px rgba(173, 216, 230, 0.45);
+    transition: all 0.4s ease;
+  }
+  
+  ion-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(173, 216, 230, 0.6);
+  }
+  
+  /* Glowing avatar frame */
+  ion-avatar img {
+    border: 4px solid #76d7f0;
+    animation: iceAura 5s infinite alternate ease;
+    border-radius: 50%;
+  }
+  
+  @keyframes iceAura {
+    0% {
+      box-shadow: 0 0 12px #76d7f0, 0 0 18px #76d7f0;
+    }
+    50% {
+      box-shadow: 0 0 18px #58c5ec, 0 0 30px #58c5ec;
+    }
+    100% {
+      box-shadow: 0 0 12px #2ab7e7, 0 0 24px #2ab7e7;
+    }
+  }
+  
+  /* Sky blue action buttons */
+  ion-button {
+    background: #58c5ec;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(173, 216, 230, 0.4);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  ion-button:hover {
+    background: #2ab7e7;
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(135, 206, 250, 0.6);
+  }
+  
+  /* Modal with snow glaze */
+  ion-modal {
+    --background: rgba(220, 240, 255, 0.7);
+    backdrop-filter: blur(16px);
+  }
+  
+  /* Alert styling with glacier tone */
+  ion-alert {
+    --background: rgba(179, 229, 252, 0.75);
+    color: #34495e;
+    border: 1px solid #76d7f0;
+  }
+  
+  /* Soft entrance animation */
+  @keyframes softFloat {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  ion-card, ion-button, ion-input, ion-textarea {
+    animation: softFloat 1s ease-out;
+  }
+  
