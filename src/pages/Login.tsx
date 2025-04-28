@@ -53,9 +53,38 @@ const Login: React.FC = () => {
 
   return (
     <IonPage>
-      <IonContent className="ion-padding" fullscreen>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-          <IonCard style={{ width: '100%', maxWidth: '400px', padding: '20px', borderRadius: '20px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
+      <IonContent fullscreen>
+        {/* Fullscreen Video Background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: -1,
+          }}
+        >
+          <source src="https://v1.pinimg.com/videos/mc/720p/69/20/e4/6920e4f48f1201adc5e29529164bf1aa.mp4" type="video/mp4" />
+        </video>
+
+        {/* Centered Login Card */}
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '20px'
+          }}
+        >
+          <IonCard style={{ width: '100%', maxWidth: '400px', padding: '20px', borderRadius: '20px', boxShadow: '0 4px 12px rgba(0,0,0,0.3)', background: 'rgba(255, 255, 255, 0.95)' }}>
             <IonCardHeader style={{ textAlign: 'center' }}>
               <IonAvatar style={{ margin: '0 auto', width: '100px', height: '100px' }}>
                 <img
@@ -105,6 +134,7 @@ const Login: React.FC = () => {
           </IonCard>
         </div>
 
+        {/* Alerts and Toasts */}
         <AlertBox message={alertMessage} isOpen={showAlert} onClose={() => setShowAlert(false)} />
 
         <IonToast
