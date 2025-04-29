@@ -1,16 +1,18 @@
-import { 
+import {
   IonAlert,
   IonAvatar,
   IonButton,
-  IonContent, 
-  IonIcon, 
-  IonInput, 
-  IonInputPasswordToggle,  
-  IonPage,  
-  IonToast,  
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonContent,
+  IonInput,
+  IonInputPasswordToggle,
+  IonPage,
+  IonToast,
   useIonRouter
 } from '@ionic/react';
-import { logoIonic } from 'ionicons/icons';
 import { useState } from 'react';
 import { supabase } from '../utils/supabaseClient';
 
@@ -43,75 +45,98 @@ const Login: React.FC = () => {
       return;
     }
 
-    setShowToast(true); 
+    setShowToast(true);
     setTimeout(() => {
       navigation.push('/it35-lab/app', 'forward', 'replace');
     }, 300);
   };
-  
+
   return (
     <IonPage>
-      <IonContent className='ion-padding'>
-        <div style={{
-          display: 'flex',
-          flexDirection:'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginTop:'25%'
-        }}>
-          <IonAvatar
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '150px',
-              height: '150px',
-              borderRadius: '50%', 
-              overflow: 'hidden' 
-            }}
-          >
-            <img 
-             src="https://sm.ign.com/t/ign_ap/screenshot/default/solo-leveling_vd6m.1280.jpg" 
-             alt="User Avatar" 
-             style={{ width: '100%', height: '100%' }} 
-            />
-          </IonAvatar>
-          <h1 style={{
+      <IonContent fullscreen>
+        {/* Fullscreen Video Background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: -1,
+          }}
+        >
+          <source src="https://v1.pinimg.com/videos/mc/720p/69/20/e4/6920e4f48f1201adc5e29529164bf1aa.mp4" type="video/mp4" />
+        </video>
+
+        {/* Centered Login Card */}
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
             display: 'flex',
-            alignItems: 'center',
             justifyContent: 'center',
-          }}>USER LOGIN</h1>
-          <IonInput
-            label="Email" 
-            labelPlacement="floating" 
-            fill="outline"
-            type="email"
-            placeholder="Enter Email"
-            value={email}
-            onIonChange={e => setEmail(e.detail.value!)}
-          />
-          <IonInput style={{ marginTop:'10px' }}      
-            fill="outline"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onIonChange={e => setPassword(e.detail.value!)}
-          >
-            <IonInputPasswordToggle slot="end"></IonInputPasswordToggle>
-          </IonInput>
+            alignItems: 'center',
+            padding: '20px'
+          }}
+        >
+          <IonCard style={{ width: '100%', maxWidth: '400px', padding: '20px', borderRadius: '20px', boxShadow: '0 4px 12px rgba(0,0,0,0.3)', background: 'rgba(255, 255, 255, 0.95)' }}>
+            <IonCardHeader style={{ textAlign: 'center' }}>
+              <IonAvatar style={{ margin: '0 auto', width: '100px', height: '100px' }}>
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC4eYWUYMxURMfMo8D1gnNiYd3wXkYf0ycLQ&s"
+                  alt="Avatar"
+                  style={{ width: '100%', height: '100%' }}
+                />
+              </IonAvatar>
+              <IonCardTitle style={{ marginTop: '16px', fontWeight: 'bold' }}>User Login</IonCardTitle>
+            </IonCardHeader>
+
+            <IonCardContent>
+              <IonInput
+                label="Email"
+                labelPlacement="floating"
+                fill="outline"
+                type="email"
+                placeholder="Enter Email"
+                value={email}
+                onIonChange={e => setEmail(e.detail.value!)}
+              />
+              <IonInput
+                style={{ marginTop: '16px' }}
+                fill="outline"
+                type="password"
+                placeholder="Password"
+                value={password}
+                onIonChange={e => setPassword(e.detail.value!)}
+              >
+                <IonInputPasswordToggle slot="end" />
+              </IonInput>
+
+              <IonButton onClick={doLogin} expand="block" shape="round" style={{ marginTop: '20px' }}>
+                Login
+              </IonButton>
+
+              <IonButton
+                routerLink="/it35-lab/register"
+                expand="block"
+                fill="clear"
+                shape="round"
+                style={{ marginTop: '10px' }}
+              >
+                Don't have an account? Register
+              </IonButton>
+            </IonCardContent>
+          </IonCard>
         </div>
-        <IonButton onClick={doLogin} expand="full" shape='round'>
-          Login
-        </IonButton>
 
-        <IonButton routerLink="/it35-lab/register" expand="full" fill="clear" shape='round'>
-          Don't have an account? Register here
-        </IonButton>
-
-        {/* Reusable AlertBox Component */}
+        {/* Alerts and Toasts */}
         <AlertBox message={alertMessage} isOpen={showAlert} onClose={() => setShowAlert(false)} />
 
-        {/* IonToast for success message */}
         <IonToast
           isOpen={showToast}
           onDidDismiss={() => setShowToast(false)}
