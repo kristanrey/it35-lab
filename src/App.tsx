@@ -1,7 +1,7 @@
-
 import { Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+
 
 import '@ionic/react/css/core.css';
 import '@ionic/react/css/normalize.css';
@@ -15,9 +15,10 @@ import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
 import './theme/variables.css';
+
 import Login from './pages/Login';
 import Menu from './pages/Menu';
-import Registration from './pages/Registration'; // Import Registration component
+import Registration from './pages/Registration';
 
 setupIonicReact();
 

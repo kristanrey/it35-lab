@@ -60,6 +60,7 @@ const Login: React.FC = () => {
           <IonTitle>Login</IonTitle>
         </IonToolbar>
       </IonHeader>
+
       <IonContent className="ion-padding">
         <IonGrid style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
           <IonRow>
@@ -75,11 +76,24 @@ const Login: React.FC = () => {
           </IonRow>
         </IonGrid>
 
-        <IonInput label="Email" type="email" value={email} onIonChange={(e) => setEmail(e.detail.value!)} placeholder="Enter email" />
-        <IonInput type="password" label="Password" value={password} onIonChange={(e) => setPassword(e.detail.value!)} placeholder="Enter password">
+        <IonInput
+          label="Email"
+          type="email"
+          value={email}
+          onIonChange={(e) => setEmail(e.detail.value!)}
+          placeholder="Enter email"
+        />
+        <IonInput
+          type="password"
+          label="Password"
+          value={password}
+          onIonChange={(e) => setPassword(e.detail.value!)}
+          placeholder="Enter password"
+        >
           <IonInputPasswordToggle slot="end" />
         </IonInput>
-        <IonButton onClick={doLogin} expand="full">
+
+        <IonButton onClick={doLogin} expand="full" style={{ marginTop: '15px' }}>
           Login
         </IonButton>
 
@@ -155,7 +169,7 @@ const Login: React.FC = () => {
               borderRadius: '5px',
               fontWeight: 'bold',
               cursor: 'pointer',
-              display: 'inline-block'
+              display: 'inline-block',
             }}
           >
             Login with Facebook
