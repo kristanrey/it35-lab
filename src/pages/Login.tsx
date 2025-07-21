@@ -1,3 +1,4 @@
+// src/pages/Login.tsx
 import {
   IonAvatar,
   IonButton,
@@ -18,7 +19,7 @@ import {
 } from "@ionic/react";
 import { useState } from "react";
 import { GoogleLogin } from '@react-oauth/google';
-import jwtDecode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode'; // ✅ use jwtDecode from v4.x
 import FacebookLogin from '@greatsumini/react-facebook-login';
 
 const Login: React.FC = () => {
@@ -101,7 +102,7 @@ const Login: React.FC = () => {
           or
         </IonText>
 
-        {/* Google Login Button */}
+        {/* Google Login */}
         <div style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
           <GoogleLogin
             onSuccess={(credentialResponse) => {
@@ -133,12 +134,16 @@ const Login: React.FC = () => {
           />
         </div>
 
-        {/* Facebook Login Button */}
+        {/* Facebook Login */}
         <div style={{ marginTop: "15px", textAlign: "center" }}>
           <FacebookLogin
             appId="YOUR_FACEBOOK_APP_ID"
-            onSuccess={(response) => {
-              const fbEmail = response.email;
+            autoLoad={false}
+            useRedirect={false}
+            onSuccess={(response: any) => {
+              const fbEmail = response.email || `user_${response.userID}@facebook.com`;
+              const fbName = response.name || 'Facebook User';
+
               const users = JSON.parse(localStorage.getItem("users") || "[]");
               const existingUser = users.find((u: any) => u.email === fbEmail);
 
@@ -148,7 +153,7 @@ const Login: React.FC = () => {
               }
 
               presentToast({
-                message: `Welcome ${response.name || 'Facebook User'}!`,
+                message: `Welcome ${fbName}!`,
                 duration: 2000,
                 position: "top",
                 color: "success",
@@ -157,9 +162,12 @@ const Login: React.FC = () => {
               router.push("/it35-lab/app");
             }}
             onFail={(err) => {
+              console.error("Facebook Login Error:", err);
               setAlertMessage("Facebook login failed.");
               setShowAlert(true);
             }}
+            scope="public_profile,email"
+            fields="name,email"
             style={{
               width: '250px',
               padding: '10px',
