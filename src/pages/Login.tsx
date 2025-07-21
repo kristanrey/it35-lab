@@ -137,7 +137,7 @@ const Login: React.FC = () => {
         {/* Facebook Login */}
         <div style={{ marginTop: "15px", textAlign: "center" }}>
           <FacebookLogin
-            appId="YOUR_FACEBOOK_APP_ID"
+            appId="741074022014246"
             autoLoad={false}
             useRedirect={false}
             onSuccess={(response: any) => {
